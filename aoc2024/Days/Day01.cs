@@ -2,10 +2,10 @@ using Common;
 
 namespace aoc2024.Days;
 
-public class Day01 : Day
+public class Day01 : IDay
 {
-    private List<int> left = new List<int>();
-    private List<int> right = new List<int>();
+    private List<int> left = [];
+    private List<int> right = [];
     
     public Tuple<string, string> Solve()
     {
@@ -32,19 +32,15 @@ public class Day01 : Day
     private string Part2()
     {
         var counts = new Dictionary<int, int>();
-        var total = 0;
-        
+
         foreach (var id in right)
         {
             var current = counts.GetValueOrDefault(id, 0);
             counts[id] = current + 1;
         }
 
-        foreach (var id in left)
-        {
-            total += id * counts.GetValueOrDefault(id, 0);
-        }
-        
+        var total = left.Sum(id => id * counts.GetValueOrDefault(id, 0));
+
         return total.ToString();
     }
 }

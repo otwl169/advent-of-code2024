@@ -1,6 +1,6 @@
 namespace Common;
 
-public interface Day
+public interface IDay
 { 
     Tuple<string, string> Solve();
 }
