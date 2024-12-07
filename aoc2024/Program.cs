@@ -2,7 +2,7 @@
 
 using aoc2024.Days;
 
-var day = new Day06();
+var day = new Day07();
 
 var solutions = day.Solve();
 Console.WriteLine($"Part 1 answer: {solutions.Item1}\nPart 2 answer: {solutions.Item2}");
