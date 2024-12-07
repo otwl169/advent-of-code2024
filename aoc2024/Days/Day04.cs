@@ -8,7 +8,7 @@ public class Day04 : IDay
 
     public Tuple<string, string> Solve()
     {
-        var lines = File.ReadAllLines("Inputs\\Day04.txt");
+        var lines = File.ReadAllLines(Path.Combine("Inputs", "Day04.txt"));
 
         _grid = new char[lines[0].Length, lines.Length];
         var j = 0;

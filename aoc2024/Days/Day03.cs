@@ -13,7 +13,7 @@ public partial class Day03 : IDay
     private static partial Regex MyRegex2();
     private static readonly Regex R2 = MyRegex2();
 
-    private readonly string _text = File.ReadAllText("Inputs\\Day03.txt");
+    private readonly string _text = File.ReadAllText(Path.Combine("Inputs", "Day03.txt"));
 
     public Tuple<string, string> Solve()
     {

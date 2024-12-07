@@ -18,7 +18,7 @@ public partial class Day05 : IDay
 
     public Tuple<string, string> Solve()
     {
-        var text = File.ReadAllText("Inputs\\Day05.txt");
+        var text = File.ReadAllText(Path.Combine("Inputs", "Day05.txt"));
 
         // parse page orders
         foreach (Match match in PageOrderingRegex.Matches(text))

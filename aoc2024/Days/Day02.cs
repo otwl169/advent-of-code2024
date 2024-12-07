@@ -8,7 +8,7 @@ public class Day02 : IDay
 
     public Tuple<string, string> Solve()
     {
-        var lines = File.ReadAllLines("Inputs\\Day02.txt");
+        var lines = File.ReadAllLines(Path.Combine("Inputs", "Day02.txt"));
         foreach (var val in lines.Select(l => l.Split(' ')))
         {
             var values = val.Select(v => int.Parse(v)).ToList();

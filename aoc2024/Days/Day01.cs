@@ -9,7 +9,7 @@ public class Day01 : IDay
     
     public Tuple<string, string> Solve()
     {
-        var lines  = File.ReadAllLines("Inputs\\Day01.txt");
+        var lines  = File.ReadAllLines(Path.Combine("Inputs", "Day01.txt"));
         foreach (var line in lines)
         {
             // Use known length of ints to avoid allocation of strings
