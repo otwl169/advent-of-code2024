@@ -34,33 +34,19 @@ public class Day08 : IDay
 
     private string Part1()
     {
-        // for each antenna loop over all antennas of the same type and check for antinodes
-        var antinodes = new HashSet<Point>();
-        foreach (var kvp in _antennas)
-        {
-            foreach (var pointA in kvp.Value)
-            {
-                foreach (var pointB in kvp.Value)
-                {
-                    if (pointA == pointB) continue;
-                    
-                    var aToBVector = pointB - pointA;
-                    var antinodePastB = pointB + aToBVector;
-                    var antinodePastA = pointA - aToBVector;
-
-                    antinodes.Add(antinodePastB);
-                    antinodes.Add(antinodePastA);
-                }
-            }
-        }
-
-        return antinodes.Count(p => !OutOfBounds(p)).ToString();
+        return CountAntinodes(false).ToString();
     }
     
     private string Part2()
     {
-        // for each antenna loop over all antennas of the same type and check for antinodes
+        return CountAntinodes(true).ToString();
+    }
+    
+    private int CountAntinodes(bool includeMultiples)
+    {
+        // For each antenna loop over all antennas of the same type and check for antinodes
         var antinodes = new HashSet<Point>();
+        var maximumMultiple = includeMultiples ? int.MaxValue : 1;
         foreach (var kvp in _antennas)
         {
             foreach (var pointA in kvp.Value)
@@ -68,21 +54,20 @@ public class Day08 : IDay
                 foreach (var pointB in kvp.Value)
                 {
                     if (pointA == pointB) continue;
-                    
-                    // now we also add pointA, pointB and multiples of the vector difference along the line
-                    antinodes.Add(pointA); // pointB will add itself as we iterate over it
+
+                    if (includeMultiples) antinodes.Add(pointA);
                     var aToBVector = pointB - pointA;
                     var multiple = 1;
-                    while (!OutOfBounds(pointA + multiple*aToBVector))
+                    while (!OutOfBounds(pointA - multiple*aToBVector) && multiple <= maximumMultiple)
                     {
-                        antinodes.Add(pointA + multiple*aToBVector);
+                        antinodes.Add(pointA - multiple*aToBVector);
                         multiple++;
                     }
                 }
             }
         }
 
-        return antinodes.Count(p => !OutOfBounds(p)).ToString();
+        return antinodes.Count(p => !OutOfBounds(p));
     }
 
     private bool OutOfBounds(Point p)
