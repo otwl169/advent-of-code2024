@@ -94,7 +94,7 @@ public class Day08 : IDay
 
 internal record struct Point(int X, int Y)
 {
-    public static Point operator +(Point a, Point b) => new Point(a.X + b.X, a.Y + b.Y);
-    public static Point operator -(Point a, Point b) => new Point(a.X - b.X, a.Y - b.Y);
-    public static Point operator *(int a, Point b) => new Point(a * b.X, a * b.Y);
+    public static Point operator +(Point a, Point b) => new(a.X + b.X, a.Y + b.Y);
+    public static Point operator -(Point a, Point b) => new(a.X - b.X, a.Y - b.Y);
+    public static Point operator *(int a, Point b) => new(a * b.X, a * b.Y);
 }
