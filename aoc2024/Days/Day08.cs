@@ -20,7 +20,7 @@ public class Day08 : IDay
                 _grid[i, j] = ch;
                 if (ch != '.')
                 {
-                    if (_antennas.ContainsKey(ch)) _antennas[ch].Add(new Point(i, j));
+                    if (_antennas.TryGetValue(ch, out var list)) list.Add(new Point(i, j));
                     else _antennas[ch] = [new Point(i, j)];
                 }
                 i++;
